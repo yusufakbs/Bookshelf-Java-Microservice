@@ -1,6 +1,6 @@
 package com.bookshelf.library_service.dto
 
-data class BookIdDto(
+data class BookIdDto @JvmOverloads constructor(
     val id: String? = "",
     val isbn: String
 ) {

@@ -1,4 +1,4 @@
-package com.bookshelf.library_service.client;
+package com.bookshelf.library_service.exception;
 
 public record ExceptionMessage(
         String timestamp,
