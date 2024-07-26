@@ -4,6 +4,8 @@ import com.bookshelf.book_service.dto.BookDto;
 import com.bookshelf.book_service.dto.BookIdDto;
 import com.bookshelf.book_service.service.BookService;
 import jakarta.validation.constraints.NotEmpty;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/book")
 public class BookController {
+    Logger logger = LoggerFactory.getLogger(BookController.class);
     private final BookService bookService;
 
     public BookController(BookService bookService) {
@@ -28,6 +31,7 @@ public class BookController {
 
     @GetMapping("/isbn/{isbn}")
     public ResponseEntity<BookIdDto> getBookByIsbn(@PathVariable("isbn") @NotEmpty String isbn) {
+        logger.info("Book requested by isbn: "+ isbn);
         return ResponseEntity.ok(bookService.findByIsbn(isbn));
     }
 
